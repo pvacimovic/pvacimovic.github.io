@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Petar Acimovic — Incoming PhD student in Computer Science at Georgia Tech.">
+  <meta name="description" content="Petar Acimovic — PhD student in Computer Science at Georgia Tech.">
   <title>Petar Acimovic</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,12 +37,27 @@
     }
 
     /* Header */
+    .name-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
     h1 {
       font-size: 2.25rem;
       font-weight: 600;
       letter-spacing: -0.02em;
       color: #111;
-      margin-bottom: 8px;
+      margin-bottom: 0;
     }
 
     .subtitle {
@@ -112,19 +127,41 @@
       margin-top: 2px;
     }
 
-    /* Contact links */
-    .contact-list {
-      list-style: none;
+    /* Experience list */
+    .exp-list {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
+    .exp-line {
+      font-size: 0.95rem;
+      color: #4b5563;
+    }
+
+    .exp-role {
+      font-weight: 600;
+      color: #111;
+    }
+
+    .exp-date {
+      color: #9ca3af;
+      font-size: 0.85rem;
+    }
+
+    /* Contact links */
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
     .contact-list a {
       color: #2563eb;
       text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
+      font-size: 0.9rem;
+      font-weight: 400;
       transition: color 0.2s ease;
     }
 
@@ -136,6 +173,14 @@
       color: #6b7280;
       font-weight: 400;
       margin-right: 6px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      color: #c1c1bf;
+      font-size: 0.75rem;
+      margin-top: 60px;
     }
 
     /* Responsive */
@@ -154,9 +199,12 @@
 <body>
 <div class="content">
 
-  <h1>Petar Acimovic</h1>
+  <div class="name-row">
+    <img src="logos/red.png" alt="" class="avatar">
+    <h1>Petar Acimovic</h1>
+  </div>
   <p class="subtitle">
-    Incoming PhD in Computer Science, Georgia Tech<br>
+    PhD in Computer Science, Georgia Tech<br>
     Advised by Professor <a href="https://sites.cc.gatech.edu/home/ada/">Ada Gavrilovska</a>
   </p>
 
@@ -178,12 +226,37 @@
 
   <div class="divider"></div>
 
+  <h2>Publications</h2>
+
+  <div class="item">
+    <div class="item-detail">1. A. Andrade, <strong>P. Acimovic</strong>, W. Su, S. Mahar, A. Kokolis, A. Dhanotia, J. Stojkovic. (November 2026). "Fidelio: Agentic AI Framework for Synthesizing Microarchitecture-Faithful Datacenter Benchmarks". <em>To Appear In Proceedings of the 59th International Symposium on Microarchitecture (MICRO)</em>. Paper: [<a href="papers/Fidelio_MICRO_CameraReady.pdf">PDF</a>].</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2>Experience</h2>
+
+  <div class="exp-list">
+    <div class="exp-line"><span class="exp-role">Graduate Research Assistant</span>, Georgia Institute of Technology <span class="exp-date">· Aug 2026 – Present · Atlanta, GA</span></div>
+    <div class="exp-line"><span class="exp-role">Visiting Researcher</span>, The University of Texas at Austin <span class="exp-date">· Aug 2025 – Apr 2026</span></div>
+    <div class="exp-line"><span class="exp-role">Systems Design Engineer Intern</span>, AMD <span class="exp-date">· May 2025 – Aug 2025 · Austin, TX</span></div>
+    <div class="exp-line"><span class="exp-role">Software Engineer Intern</span>, AMD <span class="exp-date">· Sep 2024 – Dec 2024 · Austin, TX</span></div>
+    <div class="exp-line"><span class="exp-role">Software Engineer Intern</span>, Infinera (Nokia) <span class="exp-date">· Jan 2024 – May 2024 · San Jose, CA</span></div>
+    <div class="exp-line"><span class="exp-role">Software Engineer Intern</span>, Infinera (Nokia) <span class="exp-date">· May 2023 – Jul 2023 · San Jose, CA</span></div>
+    <div class="exp-line"><span class="exp-role">Undergraduate Research Assistant</span>, University of Cincinnati <span class="exp-date">· Jan 2023 – Aug 2024 · Cincinnati, OH</span></div>
+    <div class="exp-line"><span class="exp-role">Computer Engineer Intern</span>, Chamberlain Group <span class="exp-date">· Sep 2022 – Dec 2022 · Chicago, IL</span></div>
+  </div>
+
+  <div class="divider"></div>
+
   <h2>Contact</h2>
   <ul class="contact-list">
     <li><span class="label">Email</span> <a href="mailto:pacimovic3@gatech.edu">pacimovic3@gatech.edu</a></li>
     <li><span class="label">LinkedIn</span> <a href="https://www.linkedin.com/in/petar-acimovic/">petar-acimovic</a></li>
     <li><span class="label">GitHub</span> <a href="https://github.com/pvacimovic">pvacimovic</a></li>
   </ul>
+
+  <div class="footer">September 2026</div>
 
 </div>
 </body>
