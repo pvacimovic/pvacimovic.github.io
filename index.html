@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Petar Acimovic — PhD student in Computer Science at Georgia Tech.">
   <title>Petar Acimovic</title>
-  <link rel="icon" href="files/logo-teal-gold.png">
+  <link rel="icon" href="files/logo-navy-gold.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -57,10 +57,9 @@
       flex-shrink: 0;
       position: relative;
       overflow: hidden;
-      background: #103436;               /* same teal as the logo's field */
+      background: #13294b;               /* dark navy, same as the tab icon */
       box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--ring);
       cursor: default;
-      outline: none;
       -webkit-tap-highlight-color: transparent;
     }
     .photo img { position: absolute; display: block; }
@@ -71,10 +70,13 @@
     }
     .photo-logo {
       top: 50%; left: 50%;
-      width: 74%; height: 74%;
+      width: 62%; height: 62%;
       transform: translate(-50%, -50%);
     }
-    .photo:hover .photo-face, .photo:focus .photo-face { opacity: 0; }
+    .photo.show-logo .photo-face { opacity: 0; }
+    @media (hover: hover) {
+      .photo:hover .photo-face { opacity: 0; }
+    }
     h1 {
       font-size: 2.25rem;
       font-weight: 600;
@@ -158,7 +160,7 @@
 <div class="content">
 
   <div class="header">
-    <div class="photo" tabindex="0">
+    <div class="photo">
       <img src="files/logo-gold.png" alt="" class="photo-logo">
       <img src="files/headshot.jpg" alt="Petar Acimovic" class="photo-face">
     </div>
@@ -193,7 +195,7 @@
 
   <h2>Publications</h2>
   <div class="item">
-    <div class="item-detail"><span class="item-title">[MICRO '26] “Fidelio: Agentic AI Framework for Synthesizing Microarchitecture-Faithful Datacenter Benchmarks”</span><br>A. Andrade, <span class="me">P. Acimovic</span>, W. Su, S. Mahar, A. Kokolis, A. Dhanotia, J. Stojkovic [<a href="files/Fidelio_MICRO_CameraReady.pdf">PDF</a>]</div>
+    <div class="item-detail"><span class="item-title">[MICRO '26] “Fidelio: Agentic AI Framework for Synthesizing Microarchitecture-Faithful Datacenter Benchmarks”</span><br>A. Andrade, <span class="me">P. Acimovic</span>, W. Su, S. Mahar, A. Kokolis, A. Dhanotia, J. Stojkovic [<a href="files/Fidelio_MICRO_CameraReady.pdf" target="_blank" rel="noopener">PDF</a>]</div>
   </div>
 
   <div class="divider"></div>
@@ -222,5 +224,12 @@
   <div class="footer">November 2026</div>
 </div>
 
+<script>
+  // Touch screens have no hover: each tap on the photo flips between photo and logo.
+  const photo = document.querySelector('.photo');
+  if (!matchMedia('(hover: hover)').matches) {
+    photo.addEventListener('click', () => photo.classList.toggle('show-logo'));
+  }
+</script>
 </body>
 </html>
