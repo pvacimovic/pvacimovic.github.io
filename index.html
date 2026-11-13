@@ -5,15 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Petar Acimovic — PhD student in Computer Science at Georgia Tech.">
   <title>Petar Acimovic</title>
+  <link rel="icon" href="files/logo-teal-gold.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* ---- Palette: cream, deep blue-green, dark gold ---- */
+    :root {
+      --bg:        #f6f3eb;
+      --text:      #17302f;
+      --text-2:    #3d5452;
+      --muted:     #7b8784;
+      --heading:   #9a7428;
+      --accent:    #1d5a58;   /* blue-green links */
+      --accent-2:  #9a7428;
+      --rule:      #d9d2c0;
+      --ring:      #b08a3a;
     }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -21,209 +31,158 @@
       margin: 0 auto;
       padding: 80px 24px 60px;
       line-height: 1.7;
-      color: #1a1a1a;
-      background-color: #fafaf9;
+      color: var(--text);
+      background-color: var(--bg);
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Fade-in animation */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+    .content { animation: fadeIn 0.6s ease-out both; }
 
-    .content {
-      animation: fadeIn 0.6s ease-out both;
-    }
+    a { text-decoration: none; }
 
-    /* Header */
-    .name-row {
+    /* ---- Header ---- */
+    .header {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 8px;
+      gap: 28px;
     }
-
-    .avatar {
-      width: 36px;
-      height: 36px;
+    .photo {
+      width: 128px;
+      height: 128px;
       border-radius: 50%;
-      object-fit: cover;
       flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      background: #103436;               /* same teal as the logo's field */
+      box-shadow: 0 0 0 2px var(--bg), 0 0 0 3.5px var(--ring);
+      cursor: default;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
     }
-
+    .photo img { position: absolute; display: block; }
+    .photo-face {
+      inset: 0; width: 100%; height: 100%;
+      object-fit: cover;
+      transition: opacity .4s ease;
+    }
+    .photo-logo {
+      top: 50%; left: 50%;
+      width: 74%; height: 74%;
+      transform: translate(-50%, -50%);
+    }
+    .photo:hover .photo-face, .photo:focus .photo-face { opacity: 0; }
     h1 {
       font-size: 2.25rem;
       font-weight: 600;
       letter-spacing: -0.02em;
-      color: #111;
-      margin-bottom: 0;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 4px;
     }
-
     .subtitle {
-      color: #6b7280;
-      font-size: 1.05rem;
-      margin-bottom: 0;
-      line-height: 1.8;
+      color: var(--text-2);
+      font-size: 1.02rem;
+      line-height: 1.75;
     }
-
-    a {
-      text-decoration: none;
-    }
-
-    .subtitle a {
-      color: #4b5563;
+    .subtitle a, .bio a {
+      color: var(--accent);
       font-weight: 500;
-      border-bottom: 1px solid #d1d5db;
-      transition: color 0.2s ease, border-color 0.2s ease;
+      border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .subtitle a:hover, .bio a:hover {
+      color: var(--accent-2);
+      border-color: var(--accent-2);
     }
 
-    .subtitle a:hover {
-      color: #2563eb;
-      border-color: #2563eb;
+    /* ---- Bio ---- */
+    .bio {
+      margin-top: 32px;
+      font-size: 1rem;
+      color: var(--text-2);
+      max-width: 62ch;
     }
 
-    /* Section divider */
+    /* ---- Sections ---- */
     .divider {
       height: 1px;
-      background: linear-gradient(to right, #e5e5e4, transparent);
+      background: linear-gradient(to right, var(--rule), transparent);
       margin: 40px 0;
       border: none;
     }
-
-    /* Section headings */
     h2 {
       font-size: 0.8rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #9ca3af;
+      letter-spacing: 0.1em;
+      color: var(--heading);
       margin-bottom: 20px;
     }
+    .item { margin-bottom: 20px; }
+    .item:last-child { margin-bottom: 0; }
+    .item-title { font-weight: 500; font-size: 1rem; color: var(--text); }
+    .item-detail { color: var(--text-2); font-size: 0.95rem; }
+    .item-detail a { color: var(--accent); }
+    .item-detail a:hover { color: var(--accent-2); }
+    .item-date { color: var(--muted); font-size: 0.85rem; margin-top: 2px; }
+    .me { font-weight: 600; color: var(--text); }
 
-    /* Education items */
-    .item {
-      margin-bottom: 20px;
-    }
+    .exp-list { display: flex; flex-direction: column; gap: 10px; }
+    .exp-line { font-size: 0.95rem; color: var(--text-2); }
+    .exp-role { color: var(--text); }
+    .exp-date { color: var(--muted); font-size: 0.85rem; }
 
-    .item:last-child {
-      margin-bottom: 0;
-    }
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .contact-list a { color: var(--accent); font-size: 0.9rem; transition: color .2s ease; }
+    .contact-list a:hover { color: var(--accent-2); }
+    .contact-list .email { color: var(--text); font-size: 0.9rem; }
+    .contact-list .label { color: var(--muted); margin-right: 6px; }
 
-    .item-title {
-      font-weight: 500;
-      font-size: 1rem;
-      color: #111;
-    }
+    .footer { text-align: center; color: var(--muted); opacity: .7; font-size: 0.75rem; margin-top: 60px; }
 
-    .item-detail {
-      color: #4b5563;
-      font-size: 0.95rem;
-    }
-
-    .item-date {
-      color: #9ca3af;
-      font-size: 0.85rem;
-      margin-top: 2px;
-    }
-
-    /* Experience list */
-    .exp-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .exp-line {
-      font-size: 0.95rem;
-      color: #4b5563;
-    }
-
-    .exp-role {
-      font-weight: 400;
-      color: #111;
-    }
-
-    .exp-date {
-      color: #9ca3af;
-      font-size: 0.85rem;
-    }
-
-    /* Contact links */
-    .contact-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .contact-list a {
-      color: #2563eb;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 400;
-      transition: color 0.2s ease;
-    }
-
-    .contact-list .email {
-      color: #1a1a1a;
-      font-size: 0.9rem;
-      font-weight: 400;
-    }
-
-    .contact-list a:hover {
-      color: #1d4ed8;
-    }
-
-    .contact-list .label {
-      color: #6b7280;
-      font-weight: 400;
-      margin-right: 6px;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      color: #c1c1bf;
-      font-size: 0.75rem;
-      margin-top: 60px;
-    }
-
-    /* Responsive */
     @media (max-width: 600px) {
-      body {
-        padding: 50px 20px 40px;
-      }
-
-      h1 {
-        font-size: 1.75rem;
-      }
+      body { padding: 64px 16px 40px; }
+      .header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .photo { width: 104px; height: 104px; }
+      h1 { font-size: 1.75rem; }
     }
   </style>
 </head>
 
 <body>
+
 <div class="content">
 
-  <div class="name-row">
-    <img src="files/red.png" alt="" class="avatar">
-    <h1>Petar Acimovic</h1>
+  <div class="header">
+    <div class="photo" tabindex="0">
+      <img src="files/logo-gold.png" alt="" class="photo-logo">
+      <img src="files/headshot.jpg" alt="Petar Acimovic" class="photo-face">
+    </div>
+    <div>
+      <h1>Petar Acimovic</h1>
+      <p class="subtitle">
+        PhD in Computer Science, Georgia Tech<br>
+        Advised by Professor <a href="https://sites.cc.gatech.edu/home/ada/">Ada Gavrilovska</a>
+      </p>
+    </div>
   </div>
-  <p class="subtitle">
-    PhD in Computer Science, Georgia Tech<br>
-    Advised by Professor <a href="https://sites.cc.gatech.edu/home/ada/">Ada Gavrilovska</a>
+
+  <p class="bio">
+    Working on next-generation datacenter interconnects and memory systems.
   </p>
 
   <div class="divider"></div>
 
   <h2>Education</h2>
-
   <div class="item">
     <div class="item-title">Georgia Institute of Technology</div>
     <div class="item-detail">PhD in Computer Science</div>
     <div class="item-date">2026 – Present</div>
   </div>
-
   <div class="item">
     <div class="item-title">University of Cincinnati</div>
     <div class="item-detail">Bachelor of Science in Electrical Engineering</div>
@@ -233,15 +192,13 @@
   <div class="divider"></div>
 
   <h2>Publications</h2>
-
   <div class="item">
-    <div class="item-detail"><span class="item-title">[MICRO '26] “Fidelio: Agentic AI Framework for Synthesizing Microarchitecture-Faithful Datacenter Benchmarks”</span><br>A. Andrade, <strong style="font-weight: 600; color: #111;">P. Acimovic</strong>, W. Su, S. Mahar, A. Kokolis, A. Dhanotia, J. Stojkovic · [<a href="files/Fidelio_MICRO_CameraReady.pdf">PDF</a>]</div>
+    <div class="item-detail"><span class="item-title">[MICRO '26] “Fidelio: Agentic AI Framework for Synthesizing Microarchitecture-Faithful Datacenter Benchmarks”</span><br>A. Andrade, <span class="me">P. Acimovic</span>, W. Su, S. Mahar, A. Kokolis, A. Dhanotia, J. Stojkovic [<a href="files/Fidelio_MICRO_CameraReady.pdf">PDF</a>]</div>
   </div>
 
   <div class="divider"></div>
 
   <h2>Experience</h2>
-
   <div class="exp-list">
     <div class="exp-line"><span class="exp-role">Graduate Research Assistant</span>, Georgia Institute of Technology <span class="exp-date">· Aug 2026 – Present · Atlanta, GA</span></div>
     <div class="exp-line"><span class="exp-role">Visiting Researcher</span>, The University of Texas at Austin <span class="exp-date">· Aug 2025 – Apr 2026</span></div>
@@ -262,8 +219,8 @@
     <li><span class="label">GitHub</span> <a href="https://github.com/pvacimovic">pvacimovic</a></li>
   </ul>
 
-  <div class="footer">September 2026</div>
-
+  <div class="footer">November 2026</div>
 </div>
+
 </body>
 </html>
